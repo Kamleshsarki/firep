@@ -12,20 +12,20 @@
 <body>
   <h1>Welcome to My Awesome App</h1>
   <div id="firebaseui-auth-container"></div>
-  
+  <button id="signOut">Sign Out</button>
+
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
   <script src="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.js"></script>
   <script type="text/javascript">
     const config = {
-    apiKey: "AIzaSyBVUGxQEmowc0m6Rg6IPc0VtwWKjSyxaQ8",
-    authDomain: "project2-742aa.firebaseapp.com",
-    databaseURL: "https://project2-742aa.firebaseio.com",
-    projectId: "project2-742aa",
-    storageBucket: "",
-    messagingSenderId: "1075298759176",
-    appId: "1:1075298759176:web:d4a4dc590502d86a8417bd",
-    measurementId: "G-7B1MBFVNL4"
+      apiKey: 'AIzaSyBljzbFqJDnqMdB3gpkMsPNlG92bZa3NkI',
+      authDomain: 'some-project-f0d2a.firebaseapp.com',
+      databaseURL: 'https://some-project-f0d2a.firebaseio.com',
+      projectId: 'some-project-f0d2a',
+      storageBucket: 'some-project-f0d2a.appspot.com',
+      messagingSenderId: '162721350418',
+      appId: '1:162721350418:web:847f8051358f054a76a9cb'
     }
 
     firebase.initializeApp(config)
@@ -41,7 +41,23 @@
     // Initialize the FirebaseUI Widget using Firebase.
     const ui = new firebaseui.auth.AuthUI(firebase.auth())
     // The start method will wait until the DOM is loaded.
-    ui.start('#firebaseui-auth-container', uiConfig);
+    ui.start('#firebaseui-auth-container', uiConfig)
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        document.getElementById('firebaseui-auth-container').style.display = 'none'
+        document.getElementById('signOut').style.display = 'block'
+      } else {
+        document.getElementById('firebaseui-auth-container').style.display = 'block'
+        document.getElementById('signOut').style.display = 'none'
+      }
+    })
+
+    document.getElementById('signOut').addEventListener('click', e => {
+      firebase.auth().signOut()
+    })
+
+
   </script>
 </body>
 
