@@ -14,11 +14,16 @@
   <div id="firebaseui-auth-container"></div>
   <button id="signOut">Sign Out</button>
 
-  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
-  <script src="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.js"></script>
-  <script type="text/javascript">
-    const config = {
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  const Config = {
     apiKey: "AIzaSyBVUGxQEmowc0m6Rg6IPc0VtwWKjSyxaQ8",
     authDomain: "project2-742aa.firebaseapp.com",
     databaseURL: "https://project2-742aa.firebaseio.com",
@@ -27,13 +32,15 @@
     messagingSenderId: "1075298759176",
     appId: "1:1075298759176:web:d4a4dc590502d86a8417bd",
     measurementId: "G-7B1MBFVNL4"
-    }
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
 
-    firebase.initializeApp(config)
 
-    // FirebaseUI config.
+    //FirebaseUI config.
     const uiConfig = {
-      signInSuccessUrl: 'index.html',
+      signInSuccessUrl: 'login.html',
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
       ]
