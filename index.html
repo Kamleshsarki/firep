@@ -14,37 +14,30 @@
   <div id="firebaseui-auth-container"></div>
   <button id="signOut">Sign Out</button>
 
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.js"></script>
+  <script type="text/javascript">
+    const config = {
+      apiKey: 'AIzaSyBljzbFqJDnqMdB3gpkMsPNlG92bZa3NkI',
+      authDomain: 'some-project-f0d2a.firebaseapp.com',
+      databaseURL: 'https://some-project-f0d2a.firebaseio.com',
+      projectId: 'some-project-f0d2a',
+      storageBucket: 'some-project-f0d2a.appspot.com',
+      messagingSenderId: '162721350418',
+      appId: '1:162721350418:web:847f8051358f054a76a9cb'
+    }
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script>
+    firebase.initializeApp(config)
 
-<script>
-  // Your web app's Firebase configuration
-  const Config = {
-    apiKey: "AIzaSyBVUGxQEmowc0m6Rg6IPc0VtwWKjSyxaQ8",
-    authDomain: "project2-742aa.firebaseapp.com",
-    databaseURL: "https://project2-742aa.firebaseio.com",
-    projectId: "project2-742aa",
-    storageBucket: "project2-742aa.appspot.com",
-    messagingSenderId: "1075298759176",
-    appId: "1:1075298759176:web:d4a4dc590502d86a8417bd",
-    measurementId: "G-7B1MBFVNL4"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
-
-    //FirebaseUI config.
+    // FirebaseUI config.
     const uiConfig = {
-      signInSuccessUrl: 'index.html',
+      signInSuccessUrl: 'login.html',
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
       ]
     }
+
     // Initialize the FirebaseUI Widget using Firebase.
     const ui = new firebaseui.auth.AuthUI(firebase.auth())
     // The start method will wait until the DOM is loaded.
@@ -59,9 +52,11 @@
         document.getElementById('signOut').style.display = 'none'
       }
     })
+
     document.getElementById('signOut').addEventListener('click', e => {
       firebase.auth().signOut()
     })
+
 
   </script>
 </body>
